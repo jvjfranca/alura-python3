@@ -18,6 +18,10 @@ class Conta(object):
     def depositar(self, valor):
         self.__saldo += valor
 
+    def transferencia(self, valor, conta_destino):
+        self.sacar(valor)
+        conta_destino.depositar(valor)
+
 
 if __name__ == "__main__":
     conta = Conta(123, "jose vicente", 8900.00)
