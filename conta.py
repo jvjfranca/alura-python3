@@ -10,7 +10,10 @@ class Conta(object):
         self.__limite = limite
 
     def sacar(self, valor):
-        self.__saldo -= valor
+        if(self.__pode_sacar(valor)):
+            self.__saldo -= valor
+        else:
+            print(f"O valor {valor} do saque passou o limite de {self.__limite}.")
 
     def extrato(self):
         print(f"Saldo de {self.__saldo} na conta do {self.__titular}.")
@@ -40,6 +43,10 @@ class Conta(object):
     @limite.setter
     def limite(self, novo_limite):
         self.__limite += novo_limite
+
+    def __pode_sacar(self, valor_a_sacar):
+        saldo_disponivel = self.__saldo + self.__limite
+        return valor_a_sacar <= saldo_disponivel
     
 
 if __name__ == "__main__":
