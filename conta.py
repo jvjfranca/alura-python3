@@ -47,7 +47,14 @@ class Conta(object):
     def __pode_sacar(self, valor_a_sacar):
         saldo_disponivel = self.__saldo + self.__limite
         return valor_a_sacar <= saldo_disponivel
+
+    @staticmethod
+    def codigo_banco():
+        return "001"
     
+    @staticmethod
+    def codigos_bancos():
+        return {'BB': '001', 'Caixa': '104', 'Bradesco': '324'}
 
 if __name__ == "__main__":
     conta = Conta(123, "jose vicente", 8900.00)
