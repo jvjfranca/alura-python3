@@ -28,13 +28,15 @@ class Conta(object):
     def get_titular(self):
         return self.__titular
 
-    def get_limite(self):
+    @property
+    def limite(self):
         return self.__limite
 
     def get_numero(self):
         return self.__numero
 
-    def set_limite(self, novo_limite):
+    @limite.setter
+    def limite(self, novo_limite):
         self.__limite += novo_limite
     
 
