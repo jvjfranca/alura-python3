@@ -2,10 +2,10 @@ class Programa(object):
     """
     Classe Programa
     """
-    _likes = 0
     def __init__(self, nome, ano):
         self._nome = nome.title()
         self._ano = ano
+        self._likes = 0
 
     @property
     def nome(self):
@@ -41,10 +41,24 @@ class Programa(object):
         """
         self._likes += 1
 
+    @property
+    def likes(self):
+        """
+        Getter Likes
+        """
+        return self._likes
+
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.__duracao = duracao
+
+    @property
+    def duracao(self):
+        """
+        Getter Duracao
+        """
+        return self.__duracao
 
 
 class Serie(Programa):
@@ -53,12 +67,22 @@ class Serie(Programa):
     """
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
-        self.temporadas = temporadas
+        self.__temporadas = temporadas
 
+    @property
+    def temporadas(self):
+        """
+        Getter Temporadas
+        """
+        return self.__temporadas
 
 
 if __name__ == "__main__":
     vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-    print(vingadores.nome)
     atlanta = Serie('atlanta', 2018, 2)
-    print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano}')
+    vingadores.dar_likes()
+    vingadores.dar_likes()
+    vingadores.dar_likes()
+    atlanta.dar_likes()
+    print(f'{vingadores.nome} - {vingadores.duracao}: {vingadores.likes}')
+    print(f'{atlanta.nome} - {atlanta.temporadas}: {atlanta.likes}')
