@@ -60,6 +60,12 @@ class Filme(Programa):
         """
         return self.__duracao
 
+    def __str__(self):
+        """
+        String representation
+        """
+        return f'{self.nome} - {self.ano} - {self.duracao} - {self._likes}'
+
 
 class Serie(Programa):
     """
@@ -76,6 +82,12 @@ class Serie(Programa):
         """
         return self.__temporadas
 
+    def __str__(self):
+        """
+        String representation
+        """
+        return f'{self.nome} - {self.ano} - {self.temporadas} - {self._likes}'
+
 
 if __name__ == "__main__":
     vingadores = Filme('vingadores - guerra infinita', 2018, 160)
@@ -84,5 +96,6 @@ if __name__ == "__main__":
     vingadores.dar_likes()
     vingadores.dar_likes()
     atlanta.dar_likes()
-    print(f'{vingadores.nome} - {vingadores.duracao}: {vingadores.likes}')
-    print(f'{atlanta.nome} - {atlanta.temporadas}: {atlanta.likes}')
+    programas = [vingadores, atlanta]
+    for programa in programas:
+        print(programa)
