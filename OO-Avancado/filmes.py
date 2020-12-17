@@ -89,7 +89,7 @@ class Serie(Programa):
         return f'{self.nome} - {self.ano} - {self.temporadas} - {self._likes}'
 
 
-class Playlist():
+class Playlist(object):
     def __init__(self, nome, programas):
         self.nome = nome
         self._programas = programas
@@ -102,14 +102,41 @@ class Playlist():
     def tamanho(self):
         return len(self._programas)
 
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    def __len__(self):
+        return len(self._programas)
+
 if __name__ == "__main__":
     vingadores = Filme('vingadores - guerra infinita', 2018, 160)
     atlanta = Serie('atlanta', 2018, 2)
+    got = Serie('game of thrones', 2018, 900)
+    lotro = Filme('lord of the rings', 2008, 180)
     vingadores.dar_likes()
     vingadores.dar_likes()
     vingadores.dar_likes()
+    got.dar_likes()
+    got.dar_likes()
+    got.dar_likes()
+    got.dar_likes()
+    got.dar_likes()
+    got.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
+    lotro.dar_likes()
     atlanta.dar_likes()
-    programas = [vingadores, atlanta]
+    atlanta.dar_likes()
+    atlanta.dar_likes()
+    atlanta.dar_likes()
+    atlanta.dar_likes()
+    programas = [vingadores, atlanta, lotro, got]
     playlist_final_de_semana = Playlist('final de semana', programas)
-    for programa in playlist_final_de_semana.listagem:
+    for programa in playlist_final_de_semana:
         print(programa)
+    print(len(playlist_final_de_semana))
